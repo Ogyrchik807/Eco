@@ -430,6 +430,376 @@ input[type="range"]::-moz-range-thumb{
   .hero-copy{ padding:32px 24px; }
   .panel{ padding:20px; }
 }
+
+/* ================================================================
+   ECONEXPLORER — WOW LAYER / 2026
+   Поверх существующей логики: cinematic UI, glass, motion, accessibility.
+   ================================================================ */
+:root{
+  --x-bg:#eef2ec;
+  --x-card:rgba(255,255,255,.78);
+  --x-card-solid:#fbfcf8;
+  --x-border:rgba(23,36,32,.11);
+  --x-shadow:0 24px 70px -35px rgba(10,62,59,.38);
+  --x-shadow-hover:0 28px 80px -30px rgba(10,62,59,.46);
+  --x-violet:#7667f7;
+  --x-cyan:#55dfcf;
+  --x-yellow:#f3c76c;
+  --x-danger:#ff7d63;
+}
+html{scroll-padding-top:90px}
+body{
+  background:
+    radial-gradient(circle at 8% 0%, rgba(87,217,201,.12), transparent 28rem),
+    radial-gradient(circle at 92% 12%, rgba(118,103,247,.08), transparent 30rem),
+    linear-gradient(180deg,#f5f7f1 0%,var(--paper) 55%,#e9eee7 100%);
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.26;
+  background-image:
+    linear-gradient(rgba(14,107,99,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(14,107,99,.035) 1px,transparent 1px);
+  background-size:42px 42px;
+}
+.site-header{
+  box-shadow:0 8px 30px -24px rgba(10,62,59,.6);
+}
+.site-header::after{
+  content:"";position:absolute;left:0;bottom:-1px;width:var(--scroll-progress,0%);
+  height:2px;background:linear-gradient(90deg,var(--teal-bright),var(--x-violet),var(--amber));
+  transition:width .08s linear;
+}
+.header-row{min-height:62px}
+.brand-mark{
+  box-shadow:0 10px 25px -12px rgba(10,62,59,.75);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.brand:hover .brand-mark{transform:rotate(-4deg) scale(1.05);box-shadow:0 15px 30px -12px rgba(10,62,59,.8)}
+nav.main-nav a{position:relative}
+nav.main-nav a::after{
+  content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;
+  background:var(--teal-bright);transform:scaleX(0);transform-origin:center;
+  transition:transform .2s ease;border-radius:2px;
+}
+nav.main-nav a:hover::after,nav.main-nav a.active::after{transform:scaleX(1)}
+.quarter-stamp{background:rgba(255,255,255,.45);backdrop-filter:blur(8px)}
+.hero{
+  min-height:430px;
+  box-shadow:var(--x-shadow);
+  border:1px solid rgba(255,255,255,.18);
+  background:
+    radial-gradient(circle at 80% 15%,rgba(87,217,201,.22),transparent 28%),
+    radial-gradient(circle at 25% 95%,rgba(118,103,247,.13),transparent 30%),
+    var(--teal-deep);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.045) 45%,transparent 70%);
+  transform:translateX(-120%);animation:heroSweep 8s ease-in-out infinite;
+}
+@keyframes heroSweep{0%,45%{transform:translateX(-120%)}65%,100%{transform:translateX(120%)}}
+.hero-copy{padding:52px 46px}
+.hero-copy h1{max-width:700px;text-wrap:balance}
+.hero-copy p{font-size:16.5px;line-height:1.65}
+.hero-actions .btn{box-shadow:0 12px 30px -18px rgba(0,0,0,.55)}
+.btn{position:relative;overflow:hidden}
+.btn::before{
+  content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:translateX(-120%);transition:transform .55s ease;
+}
+.btn:hover::before{transform:translateX(120%)}
+.city-panel{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(87,217,201,.12),transparent 45%),
+    linear-gradient(145deg,#082f2d,#0a3e3b 65%,#092f36);
+}
+.city-panel::after{
+  content:"LIVE";position:absolute;right:18px;top:48px;
+  font:700 9px var(--font-mono);letter-spacing:.15em;color:#57d9c9;
+  padding:5px 8px;border:1px solid rgba(87,217,201,.28);border-radius:20px;
+  background:rgba(87,217,201,.06);box-shadow:0 0 24px rgba(87,217,201,.1);
+}
+.city-svg-wrap svg,.mini-city svg{filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));transition:transform .5s ease}
+.city-svg-wrap:hover svg{transform:scale(1.015)}
+.kpi-strip{
+  box-shadow:0 18px 55px -36px rgba(23,36,32,.45);
+  background:rgba(210,216,198,.72);
+}
+.kpi-cell{position:relative;overflow:hidden;transition:background .2s ease,transform .2s ease}
+.kpi-cell::after{
+  content:"";position:absolute;right:-24px;bottom:-32px;width:90px;height:90px;border-radius:50%;
+  background:radial-gradient(circle,rgba(24,163,152,.13),transparent 68%);
+}
+.kpi-cell:hover{background:#fff;z-index:1}
+.kpi-value{letter-spacing:-.03em}
+.module-grid{gap:18px}
+.mod-card,.panel,.chart-section,.compare-box{
+  box-shadow:0 1px 0 rgba(255,255,255,.7),0 14px 40px -30px rgba(23,36,32,.55);
+  background:var(--x-card);
+  backdrop-filter:blur(10px);
+}
+.mod-card{
+  min-height:210px;
+  border-color:var(--x-border);
+}
+.mod-card:not(.locked)::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--teal-bright),var(--x-violet));
+  transform:scaleX(0);transform-origin:left;transition:transform .25s ease;
+}
+.mod-card:not(.locked):hover::before{transform:scaleX(1)}
+.mod-card .mod-emoji{filter:drop-shadow(0 7px 8px rgba(23,36,32,.12));transition:transform .25s}
+.mod-card:hover .mod-emoji{transform:translateY(-3px) scale(1.08)}
+.section-head h2{letter-spacing:-.03em}
+.panel{transition:box-shadow .2s ease,border-color .2s ease}
+.panel:hover{box-shadow:var(--x-shadow);border-color:rgba(14,107,99,.22)}
+.result-hero{
+  box-shadow:0 18px 38px -24px rgba(10,62,59,.7);
+  background:linear-gradient(135deg,#082f2d,#0e6b63);
+}
+.result-hero .value{letter-spacing:-.04em}
+input[type=range]{
+  height:7px;
+  background:linear-gradient(90deg,var(--teal-bright) 0%,var(--teal-bright) var(--range-fill,50%),var(--line) var(--range-fill,50%),var(--line) 100%);
+}
+input[type=range]::-webkit-slider-thumb{width:20px;height:20px;box-shadow:0 0 0 2px var(--teal-deep),0 4px 12px rgba(10,62,59,.35)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;box-shadow:0 0 0 2px var(--teal-deep),0 4px 12px rgba(10,62,59,.35)}
+.choice-card{transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+.choice-card:hover{transform:translateY(-2px);box-shadow:0 10px 25px -18px rgba(10,62,59,.5)}
+.chart-section{overflow:hidden}
+.chart-section h2{display:flex;align-items:center;gap:8px}
+.chart-section h2::before{content:"";width:6px;height:18px;border-radius:4px;background:linear-gradient(var(--teal-bright),var(--x-violet))}
+.stats-bar{box-shadow:0 16px 45px -34px rgba(23,36,32,.45)}
+.site-footer{position:relative}
+.site-footer::before{content:"";width:42px;height:2px;background:var(--teal);position:absolute;top:-1px;left:0}
+.back-link{transition:transform .15s ease}
+.back-link:hover{transform:translateX(-3px)}
+.page{animation:pageIn .42s cubic-bezier(.2,.8,.2,1)}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.recommendations{box-shadow:inset 3px 0 var(--teal-bright)}
+.tip-box{box-shadow:inset 3px 0 var(--amber)}
+.compare-box{position:relative}
+.compare-box::after{
+  content:"";position:absolute;top:18px;right:20px;width:8px;height:8px;border-radius:50%;
+  background:var(--teal-bright);box-shadow:0 0 0 5px rgba(24,163,152,.08);
+}
+.x-command{
+  position:fixed;right:20px;bottom:20px;z-index:500;
+  width:50px;height:50px;border-radius:16px;border:1px solid rgba(255,255,255,.5);
+  background:rgba(10,62,59,.92);color:#fff;box-shadow:0 18px 45px -20px rgba(10,62,59,.8);
+  cursor:pointer;font:700 16px var(--font-mono);backdrop-filter:blur(12px);
+  transition:transform .2s,box-shadow .2s;
+}
+.x-command:hover{transform:translateY(-3px) rotate(2deg);box-shadow:0 22px 55px -20px rgba(10,62,59,.85)}
+.x-overlay{
+  position:fixed;inset:0;background:rgba(5,25,24,.48);backdrop-filter:blur(10px);
+  z-index:600;display:none;align-items:flex-start;justify-content:center;padding:10vh 20px;
+}
+.x-overlay.open{display:flex}
+.x-modal{
+  width:min(680px,100%);background:#f9fbf6;border:1px solid rgba(255,255,255,.7);
+  border-radius:22px;box-shadow:0 35px 100px -35px rgba(0,0,0,.55);overflow:hidden;
+}
+.x-search{padding:18px;border-bottom:1px solid var(--line)}
+.x-search input{
+  width:100%;border:0;outline:0;background:transparent;font:600 18px var(--font-body);color:var(--ink);
+}
+.x-results{padding:10px;max-height:55vh;overflow:auto}
+.x-result{
+  width:100%;display:flex;align-items:center;gap:12px;padding:13px 14px;border:0;background:transparent;
+  border-radius:12px;text-align:left;cursor:pointer;color:var(--ink);font:600 14px var(--font-body);
+}
+.x-result:hover,.x-result.selected{background:var(--paper-2)}
+.x-result .num{font:700 10px var(--font-mono);color:var(--teal)}
+.x-toast{
+  position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);z-index:800;
+  background:#102f2c;color:#fff;border:1px solid rgba(87,217,201,.2);border-radius:12px;
+  padding:11px 16px;font:600 12.5px var(--font-body);box-shadow:0 20px 50px -22px rgba(0,0,0,.6);
+  opacity:0;pointer-events:none;transition:.25s;
+}
+.x-toast.show{opacity:1;transform:translate(-50%,0)}
+.x-score{
+  display:grid;grid-template-columns:82px 1fr;gap:14px;align-items:center;
+  padding:14px 16px;margin-top:18px;border:1px solid rgba(87,217,201,.16);
+  background:rgba(255,255,255,.05);border-radius:14px;
+}
+.x-ring{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;
+  background:conic-gradient(var(--x-cyan) var(--score,70%),rgba(255,255,255,.1) 0);
+  position:relative}
+.x-ring::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#0a3e3b}
+.x-ring b{position:relative;z-index:1;font:700 16px var(--font-mono);color:#fff}
+.x-score small{display:block;color:rgba(255,255,255,.55);font-size:11px;margin-bottom:3px}
+.x-score strong{color:#fff;font-size:14px}
+.x-pulse{animation:xPulse 1.1s ease}
+@keyframes xPulse{50%{transform:scale(1.025)}}
+@media(max-width:920px){
+  .hero-copy{padding:38px 30px}
+  .city-panel{border-left:0;border-top:1px solid var(--blueprint-line)}
+}
+@media(max-width:700px){
+  .container{padding:0 15px}
+  .header-row{gap:10px}
+  .brand-text .tagline{display:none}
+  nav.main-nav{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none}
+  nav.main-nav::-webkit-scrollbar{display:none}
+  nav.main-nav a{padding:7px 10px;font-size:12px}
+  .quarter-stamp{position:absolute;right:15px;top:12px}
+  .hero{margin-top:16px;border-radius:16px}
+  .hero-copy h1{font-size:27px}
+  .hero-kpis{gap:14px}
+  .hero-kpi .num{font-size:17px}
+  .x-command{right:14px;bottom:14px}
+  .x-score{grid-template-columns:70px 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+
+/* ================================================================
+   ECONEXPLORER 2.0 — CONTROL ROOM / CITY HUD / MOTION
+   ================================================================ */
+.control-room{
+  margin:22px 0 34px;
+  border:1px solid rgba(14,107,99,.14);
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 85% 5%,rgba(87,217,201,.12),transparent 24rem),
+    linear-gradient(145deg,rgba(255,255,255,.88),rgba(239,244,235,.72));
+  box-shadow:0 22px 70px -42px rgba(10,62,59,.6);
+  overflow:hidden;
+  position:relative;
+}
+.control-room::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(14,107,99,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(14,107,99,.025) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.control-head{
+  position:relative;z-index:1;
+  padding:25px 26px 18px;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+}
+.control-head h2{margin:4px 0 5px;font-size:25px;letter-spacing:-.035em}
+.control-head p{margin:0;color:var(--ink-faint);font-size:13px;max-width:650px}
+.control-clock{
+  font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--teal);
+  white-space:nowrap;padding:9px 11px;border:1px solid rgba(14,107,99,.13);border-radius:99px;background:rgba(255,255,255,.55)
+}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#20b79e;margin-right:7px;box-shadow:0 0 0 5px rgba(32,183,158,.08);animation:liveDot 1.8s infinite}
+@keyframes liveDot{50%{opacity:.35;box-shadow:0 0 0 9px rgba(32,183,158,.03)}}
+.scenario-grid{
+  position:relative;z-index:1;padding:0 26px 18px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px
+}
+.scenario{
+  border:1px solid rgba(14,107,99,.11);background:rgba(255,255,255,.72);border-radius:14px;
+  padding:13px;display:flex;align-items:center;gap:10px;text-align:left;color:var(--ink);
+  cursor:pointer;transition:.2s ease;min-height:64px;font-family:var(--font-body)
+}
+.scenario:hover{transform:translateY(-3px);border-color:rgba(14,107,99,.28);box-shadow:0 15px 30px -24px rgba(10,62,59,.7);background:#fff}
+.scenario.active{border-color:rgba(14,107,99,.45);box-shadow:inset 0 0 0 1px rgba(87,217,201,.16),0 14px 35px -25px rgba(10,62,59,.7);background:linear-gradient(145deg,#fff,#eef9f4)}
+.scenario-icon{
+  width:35px;height:35px;border-radius:10px;display:grid;place-items:center;
+  background:#e6f5f1;color:var(--teal);font:800 17px var(--font-mono);flex:0 0 auto
+}
+.scenario b{display:block;font-size:12px}.scenario small{display:block;color:var(--ink-faint);font-size:10px;margin-top:3px}
+.telemetry-grid{
+  position:relative;z-index:1;display:grid;grid-template-columns:1.55fr 1fr;border-top:1px solid rgba(14,107,99,.1)
+}
+.telemetry-main,.decision-feed{padding:18px 24px 21px}
+.decision-feed{border-left:1px solid rgba(14,107,99,.1);background:rgba(8,47,45,.035)}
+.telemetry-title{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;
+  font:700 9px var(--font-mono);letter-spacing:.13em;color:var(--ink-faint)
+}
+.telemetry-title span:last-child{color:var(--teal)}
+.telemetry-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.telemetry-item>div{display:flex;justify-content:space-between;gap:8px;margin-bottom:7px}
+.telemetry-item span{font-size:10px;color:var(--ink-faint)}.telemetry-item b{font:700 11px var(--font-mono);color:var(--ink)}
+.telemetry-item i{height:6px;border-radius:99px;background:#e3e9df;display:block;overflow:hidden}
+.telemetry-item em{height:100%;width:0;display:block;border-radius:99px;background:linear-gradient(90deg,var(--teal),#57d9c9);transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.decision-feed{display:grid;grid-template-columns:42px 1fr;column-gap:11px;align-items:center}
+.decision-feed .telemetry-title{grid-column:1/-1;width:100%}
+.feed-icon{width:40px;height:40px;border-radius:12px;background:#0a3e3b;color:#57d9c9;display:grid;place-items:center;font:800 18px var(--font-mono);box-shadow:0 10px 24px -15px rgba(10,62,59,.7)}
+.decision-feed strong{font-size:12px;line-height:1.35}.decision-feed p{grid-column:2;margin:2px 0 0;color:var(--ink-faint);font-size:10.5px;line-height:1.45}
+.city-panel{position:relative}
+.city-hud{
+  position:absolute;right:18px;top:78px;z-index:3;display:flex;gap:6px;pointer-events:none
+}
+.city-hud>div{min-width:47px;padding:6px 7px;border:1px solid rgba(87,217,201,.16);border-radius:8px;background:rgba(3,28,27,.38);backdrop-filter:blur(7px)}
+.city-hud span{display:block;font:700 7px var(--font-mono);color:rgba(255,255,255,.4);letter-spacing:.1em}.city-hud b{display:block;margin-top:2px;font:700 11px var(--font-mono);color:#d9fff8}
+.city-svg-wrap svg rect{transition:opacity .45s ease,filter .45s ease}
+.city-svg-wrap svg path{stroke-linecap:round}
+.city-svg-wrap svg circle{animation:cityPulse 2.6s ease-in-out infinite}
+@keyframes cityPulse{50%{opacity:.45;transform-origin:center}}
+.city-panel::before{
+  content:"SCAN";position:absolute;right:18px;bottom:53px;z-index:2;
+  font:700 8px var(--font-mono);letter-spacing:.18em;color:rgba(87,217,201,.35);
+  animation:scanBlink 2.8s infinite
+}
+@keyframes scanBlink{0%,100%{opacity:.25}50%{opacity:.8}}
+.hero .x-score{position:relative;overflow:hidden}
+.hero .x-score::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(87,217,201,.08),transparent);
+  transform:translateX(-100%);animation:scoreSweep 4.5s ease-in-out infinite
+}
+@keyframes scoreSweep{0%,45%{transform:translateX(-100%)}70%,100%{transform:translateX(100%)}}
+.kpi-cell .kpi-value{transition:transform .22s ease}
+.kpi-cell.flash .kpi-value{transform:translateY(-2px) scale(1.04)}
+@media(max-width:850px){
+  .scenario-grid{grid-template-columns:repeat(2,1fr)}
+  .telemetry-grid{grid-template-columns:1fr}
+  .decision-feed{border-left:0;border-top:1px solid rgba(14,107,99,.1)}
+}
+@media(max-width:600px){
+  .control-head{display:block;padding:20px}
+  .control-clock{display:inline-block;margin-top:12px}
+  .scenario-grid{padding:0 20px 16px;grid-template-columns:1fr}
+  .telemetry-main,.decision-feed{padding:16px 20px}
+  .telemetry-bars{grid-template-columns:1fr 1fr}
+  .city-hud{right:12px;top:68px}
+}
+
+
+/* KNOWLEDGE CHECK + CITY ATLAS */
+.knowledge-check{margin:28px 0 30px;border:1px solid rgba(14,107,99,.14);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(241,245,237,.82));box-shadow:0 22px 60px -42px rgba(10,62,59,.55);overflow:hidden}
+.quiz-heading{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:24px 26px 18px}.quiz-kicker{font:700 9px var(--font-mono);letter-spacing:.15em;color:var(--teal)}.quiz-heading h2{margin:4px 0;font-size:22px;letter-spacing:-.03em}.quiz-heading p{margin:0;color:var(--ink-faint);font-size:12px}.quiz-score{min-width:82px;text-align:center;padding:11px 12px;border:1px solid rgba(14,107,99,.13);border-radius:12px;background:#fff}.quiz-score-value{display:block;font:800 18px var(--font-mono);color:var(--teal)}.quiz-score span{font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em}.quiz-progress{height:3px;background:#e7ece5}.quiz-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--teal),#57d9c9);transition:width .3s}.quiz-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px 26px 22px}.quiz-question{border:1px solid rgba(23,36,32,.1);border-radius:14px;padding:15px;background:rgba(255,255,255,.62);transition:.2s}.quiz-qtop{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.quiz-qtop>span{font:700 9px var(--font-mono);color:var(--teal)}.quiz-qtop b{font-size:12px;line-height:1.45}.quiz-options{display:grid;gap:7px}.quiz-option{display:flex;align-items:flex-start;gap:8px;width:100%;padding:9px 10px;border:1px solid #dfe5dc;border-radius:9px;background:#fafcf9;text-align:left;color:var(--ink);font:500 10.5px/1.35 var(--font-body);cursor:pointer;transition:.15s}.quiz-option span{display:grid;place-items:center;width:17px;height:17px;border-radius:5px;background:#e9efea;color:var(--ink-faint);font:700 8px var(--font-mono);flex:0 0 auto}.quiz-option:hover{border-color:rgba(14,107,99,.35);transform:translateY(-1px)}.quiz-option.selected{border-color:var(--teal)}.quiz-option.correct{border-color:#18A398;background:#eefaf6}.quiz-option.correct span{background:#18A398;color:#fff}.quiz-option.wrong{border-color:#C56E57;background:#fff3ef}.quiz-option.wrong span{background:#AE4A2E;color:#fff}.quiz-option:disabled{cursor:default}.quiz-feedback{min-height:15px;margin-top:8px;font-size:9.5px;color:var(--ink-faint);line-height:1.35}.quiz-feedback.good{color:#0E6B63}.quiz-feedback.bad{color:#AE4A2E}.quiz-result{margin:0 26px 24px;padding:13px 15px;border-radius:12px;background:#0a3e3b;color:#fff;display:grid;grid-template-columns:34px 1fr auto;gap:11px;align-items:center}.quiz-result-icon{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:rgba(87,217,201,.12);color:#57d9c9;font-weight:800}.quiz-result strong{display:block;font-size:12px}.quiz-result p{margin:2px 0 0;font-size:10px;color:rgba(255,255,255,.58)}.quiz-result .btn{white-space:nowrap}.knowledge-check.passed .quiz-result-icon{background:#57d9c9;color:#07312f}.knowledge-check.failed .quiz-result-icon{background:#AE4A2E;color:#fff}
+.city-panel{background:radial-gradient(circle at 20% 25%,rgba(87,217,201,.07),transparent 20rem),linear-gradient(145deg,#062d2b,#0a3e3b 58%,#082f3a)!important}.city-svg-wrap{padding:0 8px 3px}.city-svg-wrap svg{display:block;width:100%;height:auto}.city-legend{border-top:1px solid rgba(87,217,201,.08);padding-top:9px!important}
+@media(max-width:800px){.quiz-list{grid-template-columns:1fr 1fr}.quiz-result{grid-template-columns:34px 1fr}}
+@media(max-width:600px){.quiz-heading{display:block;padding:20px}.quiz-score{margin-top:14px;display:inline-block}.quiz-list{grid-template-columns:1fr;padding:15px 20px 20px}.quiz-result{margin:0 20px 20px}}
+
+
+/* ============================================================
+   ЭМОЦИОНАЛЬНЫЕ МИКРО-РЕАКЦИИ — экономика объясняет себя через людей
+   ============================================================ */
+.x-reaction-layer{position:fixed;right:24px;bottom:24px;z-index:9999;pointer-events:none;width:min(390px,calc(100vw - 28px));display:grid;justify-items:end}
+.x-reaction{position:relative;display:grid;grid-template-columns:86px 1fr;align-items:end;gap:10px;min-height:104px;opacity:0;transform:translateY(18px) scale(.96);filter:drop-shadow(0 18px 30px rgba(4,39,37,.18));transition:opacity .22s ease,transform .28s cubic-bezier(.2,.8,.2,1)}
+.x-reaction.show{opacity:1;transform:translateY(0) scale(1)}
+.x-reaction.hide{opacity:0;transform:translateY(10px) scale(.98)}
+.x-person{width:86px;height:104px;position:relative}
+.x-person svg{width:100%;height:100%;display:block;overflow:visible}
+.x-bubble{position:relative;max-width:280px;padding:12px 15px 13px;border:1px solid rgba(13,77,72,.12);border-radius:15px 15px 15px 4px;background:rgba(255,255,252,.97);color:#172420;box-shadow:0 12px 35px rgba(13,65,61,.16);font-family:var(--font-body)}
+.x-bubble:before{content:"";position:absolute;left:-8px;bottom:18px;width:14px;height:14px;background:#fff;border-left:1px solid rgba(13,77,72,.12);border-bottom:1px solid rgba(13,77,72,.12);transform:rotate(45deg)}
+.x-bubble small{display:block;margin-bottom:3px;font:700 8px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:#0e6b63}
+.x-bubble strong{display:block;font-size:13px;line-height:1.25;letter-spacing:-.01em}
+.x-bubble span{display:block;margin-top:4px;font-size:10px;line-height:1.35;color:#6b7771}
+.x-reaction.hot .x-bubble{border-color:rgba(174,74,46,.22)}.x-reaction.hot .x-bubble small{color:#ae4a2e}
+.x-reaction.good .x-bubble small{color:#168d7e}
+.x-reaction.warning .x-bubble small{color:#9a7021}
+.x-burst{position:absolute;left:34px;top:15px;width:16px;height:16px;opacity:0;transform:scale(.2)}
+.x-reaction.explode .x-burst{animation:xBurst .65s ease-out both}
+.x-burst i{position:absolute;left:7px;top:-9px;width:2px;height:12px;background:#ae4a2e;border-radius:2px;transform-origin:1px 17px}
+.x-burst i:nth-child(1){transform:rotate(0)}.x-burst i:nth-child(2){transform:rotate(45deg)}.x-burst i:nth-child(3){transform:rotate(90deg)}.x-burst i:nth-child(4){transform:rotate(135deg)}.x-burst i:nth-child(5){transform:rotate(180deg)}.x-burst i:nth-child(6){transform:rotate(225deg)}.x-burst i:nth-child(7){transform:rotate(270deg)}.x-burst i:nth-child(8){transform:rotate(315deg)}
+@keyframes xBurst{0%{opacity:0;transform:scale(.2) rotate(-15deg)}30%{opacity:1}100%{opacity:0;transform:scale(1.6) rotate(12deg)}}
+.x-person .head{transform-origin:50% 100%}.x-reaction.show .head{animation:xHead .55s ease-out}.x-reaction.hot.show .head{animation:xAngry .32s ease-in-out 2}.x-reaction.good.show .head{animation:xHappy .7s ease-out}
+@keyframes xHead{0%{transform:translateY(8px) rotate(-5deg)}65%{transform:translateY(-3px) rotate(2deg)}100%{transform:none}}
+@keyframes xAngry{0%,100%{transform:rotate(0)}35%{transform:rotate(-6deg) translateY(1px)}70%{transform:rotate(6deg) translateY(1px)}}
+@keyframes xHappy{0%{transform:translateY(5px)}45%{transform:translateY(-7px)}75%{transform:translateY(2px)}100%{transform:none}}
+@media(max-width:600px){.x-reaction-layer{right:12px;bottom:12px}.x-reaction{grid-template-columns:68px 1fr;min-height:88px}.x-person{width:68px;height:88px}.x-bubble{max-width:245px;padding:10px 12px}.x-bubble strong{font-size:12px}.x-bubble span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.x-reaction,.x-reaction .head,.x-reaction.explode .x-burst{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -475,7 +845,12 @@ input[type="range"]::-moz-range-thumb{
         <button class="btn btn-primary" id="goToM1Btn">Начать с Модуля 01 →</button>
         <a href="#" class="btn btn-secondary" data-page="m5">Сразу к «Городу будущего»</a>
       </div>
-      <div class="hero-kpis">
+      
+<div class="x-score" id="xScore">
+  <div class="x-ring" id="xRing"><b id="xScoreValue">—</b></div>
+  <div><small>ИНДЕКС ГОРОДА</small><strong id="xScoreText">Считаем баланс роста, цен, занятости и качества жизни…</strong></div>
+</div>
+<div class="hero-kpis">
         <div class="hero-kpi"><div class="num" id="heroGdp">—</div><div class="lbl">ВВП города</div></div>
         <div class="hero-kpi"><div class="num" id="heroInflation">—</div><div class="lbl">Инфляция</div></div>
         <div class="hero-kpi"><div class="num" id="heroUnemployment">—</div><div class="lbl">Безработица</div></div>
@@ -488,6 +863,12 @@ input[type="range"]::-moz-range-thumb{
         <span class="rev" id="cityRev">кв. 1</span>
       </div>
       <div class="city-svg-wrap" id="cityMapHome"></div>
+
+      <div class="city-hud" aria-hidden="true">
+        <div><span>IND</span><b id="xCityIndustry">—</b></div>
+        <div><span>CIV</span><b id="xCityCivic">—</b></div>
+        <div><span>LIFE</span><b id="xCityLife">—</b></div>
+      </div>
       <div class="city-legend">
         <span><i style="background:#18A398"></i>промзона / ВВП</span>
         <span><i style="background:#E9C784"></i>школы и больницы</span>
@@ -519,6 +900,54 @@ input[type="range"]::-moz-range-thumb{
       <div class="kpi-delta" id="kpiHappinessDelta">—</div>
     </div>
   </div>
+
+
+  <!-- ============================================================
+       CONTROL ROOM — быстрые сценарии и живая телеметрия
+       ============================================================ -->
+  <section class="control-room" id="controlRoom">
+    <div class="control-head">
+      <div>
+        <span class="eyebrow">CONTROL ROOM · LIVE ECONOMY</span>
+        <h2>Город прямо сейчас</h2>
+        <p>Выберите сценарий — система мгновенно пересчитает город и покажет последствия.</p>
+      </div>
+      <div class="control-clock"><span class="live-dot"></span><span id="xLiveLabel">СИСТЕМА СТАБИЛЬНА</span></div>
+    </div>
+
+    <div class="scenario-grid" id="scenarioGrid">
+      <button class="scenario" data-scenario="growth">
+        <span class="scenario-icon">↗</span><span><b>Рывок роста</b><small>инвестиции + бизнес</small></span>
+      </button>
+      <button class="scenario" data-scenario="social">
+        <span class="scenario-icon">✦</span><span><b>Социальный баланс</b><small>школы + медицина</small></span>
+      </button>
+      <button class="scenario" data-scenario="stability">
+        <span class="scenario-icon">◉</span><span><b>Стабильные цены</b><small>мягкая денежная политика</small></span>
+      </button>
+      <button class="scenario" data-scenario="tech">
+        <span class="scenario-icon">⌁</span><span><b>Техно-хаб</b><small>ставка на технологии</small></span>
+      </button>
+    </div>
+
+    <div class="telemetry-grid">
+      <div class="telemetry-main">
+        <div class="telemetry-title"><span>ЭКОНОМИЧЕСКАЯ ТЕЛЕМЕТРИЯ</span><span id="xTelemetryQuarter">Q1</span></div>
+        <div class="telemetry-bars">
+          <div class="telemetry-item"><div><span>Рост</span><b id="xGrowth">—</b></div><i><em id="xGrowthBar"></em></i></div>
+          <div class="telemetry-item"><div><span>Цены</span><b id="xInflationHealth">—</b></div><i><em id="xInflationBar"></em></i></div>
+          <div class="telemetry-item"><div><span>Рынок труда</span><b id="xJobsHealth">—</b></div><i><em id="xJobsBar"></em></i></div>
+          <div class="telemetry-item"><div><span>Качество жизни</span><b id="xHappiness">—</b></div><i><em id="xHappinessBar"></em></i></div>
+        </div>
+      </div>
+      <div class="decision-feed">
+        <div class="telemetry-title"><span>ПОСЛЕДНЕЕ РЕШЕНИЕ</span><span>AI · 01</span></div>
+        <div class="feed-icon" id="xFeedIcon">⌁</div>
+        <strong id="xFeedTitle">Город готов к эксперименту</strong>
+        <p id="xFeedText">Измените один из параметров или выберите готовый сценарий.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="section-head">
     <div>
@@ -693,6 +1122,7 @@ input[type="range"]::-moz-range-thumb{
       <div class="chart-small"><h3>Безработица и инфляция</h3><canvas id="m1-chart-macro"></canvas></div>
     </div>
   </div>
+<section class="knowledge-check" data-quiz="pageM1"><div class="quiz-heading"><div><span class="quiz-kicker">KNOWLEDGE CHECK · 01</span><h2>🧠 Проверка знаний · ВВП и экономический рост</h2><p>3 вопроса · нужно 2 правильных ответа, чтобы пройти раздел</p></div><div class="quiz-score"><b class="quiz-score-value">0/3</b><span>результат</span></div></div><div class="quiz-progress"><i></i></div><div class="quiz-list"><article class="quiz-question" data-question="0"><div class="quiz-qtop"><span>01</span><b>Что измеряет ВВП города в этой модели?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Среднюю зарплату жителей</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Суммарную стоимость товаров и услуг, произведённых за квартал</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Количество предприятий</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Только налоговые поступления</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="1"><div class="quiz-qtop"><span>02</span><b>Почему хорошая инфраструктура ускоряет рост?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Она повышает инфляцию</button><button type="button" class="quiz-option" data-correct="0"><span>B</span>Она автоматически снижает все налоги</button><button type="button" class="quiz-option" data-correct="1"><span>C</span>Она снижает издержки бизнеса и ускоряет производство</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Она отменяет безработицу</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="2"><div class="quiz-qtop"><span>03</span><b>Высокий рост ВВП автоматически означает высокий уровень благополучия каждого жителя?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Нет, потому что ВВП измеряет только налоги</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Нет, рост экономики не равен росту благополучия каждого жителя</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Да, если инфляция выше 10%</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Да, это одно и то же</button></div><div class="quiz-feedback" aria-live="polite"></div></article></div><div class="quiz-result"><div class="quiz-result-icon">✓</div><div><strong class="quiz-result-title">Готовы проверить себя?</strong><p class="quiz-result-text">Выберите ответ в каждом вопросе.</p></div><button type="button" class="btn btn-secondary quiz-retry">Пройти ещё раз</button></div></section>
 </section>
 
 <!-- ============================================================ -->
@@ -766,6 +1196,7 @@ input[type="range"]::-moz-range-thumb{
     <h2>📈 Инфляция и денежная масса — прогноз на 12 кварталов</h2>
     <div class="chart-container"><canvas id="m2-chart-inflation"></canvas></div>
   </div>
+<section class="knowledge-check" data-quiz="pageM2"><div class="quiz-heading"><div><span class="quiz-kicker">KNOWLEDGE CHECK · 02</span><h2>🧠 Проверка знаний · Инфляция</h2><p>3 вопроса · нужно 2 правильных ответа, чтобы пройти раздел</p></div><div class="quiz-score"><b class="quiz-score-value">0/3</b><span>результат</span></div></div><div class="quiz-progress"><i></i></div><div class="quiz-list"><article class="quiz-question" data-question="0"><div class="quiz-qtop"><span>01</span><b>Что такое инфляция?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Разовое подорожание одного товара</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Устойчивый рост общего уровня цен</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Рост числа предприятий</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Падение налоговой ставки</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="1"><div class="quiz-qtop"><span>02</span><b>Что может произойти, если денег становится больше, а товаров не прибавляется?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Безработица станет нулевой</button><button type="button" class="quiz-option" data-correct="0"><span>B</span>Цены обязательно упадут</button><button type="button" class="quiz-option" data-correct="1"><span>C</span>Цены могут вырасти из-за избытка спроса относительно предложения</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>ВВП автоматически удвоится</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="2"><div class="quiz-qtop"><span>03</span><b>Почему высокая инфляция опасна для жителей?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Она гарантирует рост сбережений</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Она снижает покупательную способность денег и мешает планировать</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Она отменяет налоги</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Она всегда увеличивает реальные доходы</button></div><div class="quiz-feedback" aria-live="polite"></div></article></div><div class="quiz-result"><div class="quiz-result-icon">✓</div><div><strong class="quiz-result-title">Готовы проверить себя?</strong><p class="quiz-result-text">Выберите ответ в каждом вопросе.</p></div><button type="button" class="btn btn-secondary quiz-retry">Пройти ещё раз</button></div></section>
 </section>
 
 <!-- ============================================================ -->
@@ -847,6 +1278,7 @@ input[type="range"]::-moz-range-thumb{
     <h2>📈 Безработица и число предприятий — прогноз на 12 кварталов</h2>
     <div class="chart-container"><canvas id="m3-chart-unemployment"></canvas></div>
   </div>
+<section class="knowledge-check" data-quiz="pageM3"><div class="quiz-heading"><div><span class="quiz-kicker">KNOWLEDGE CHECK · 03</span><h2>🧠 Проверка знаний · Рынок труда</h2><p>3 вопроса · нужно 2 правильных ответа, чтобы пройти раздел</p></div><div class="quiz-score"><b class="quiz-score-value">0/3</b><span>результат</span></div></div><div class="quiz-progress"><i></i></div><div class="quiz-list"><article class="quiz-question" data-question="0"><div class="quiz-qtop"><span>01</span><b>Как определяется безработица в материале?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Доля всех жителей без дохода</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Доля трудоспособных людей, которые хотят работать, но не могут найти работу</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Количество закрытых предприятий</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Процент людей старше 65 лет</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="1"><div class="quiz-qtop"><span>02</span><b>Что может произойти при слишком низкой безработице?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Налоги автоматически снижаются</button><button type="button" class="quiz-option" data-correct="0"><span>B</span>Инфляция всегда исчезает</button><button type="button" class="quiz-option" data-correct="1"><span>C</span>Работодателям может не хватать работников, что разгоняет зарплаты и инфляцию</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Предприятия перестают платить зарплату</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="2"><div class="quiz-qtop"><span>03</span><b>Почему образование помогает занятости?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Оно уменьшает размер рабочей силы</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Более квалифицированные кадры помогают быстрее и охотнее открывать новые предприятия</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Оно фиксирует курс валюты</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Оно напрямую отменяет налоги</button></div><div class="quiz-feedback" aria-live="polite"></div></article></div><div class="quiz-result"><div class="quiz-result-icon">✓</div><div><strong class="quiz-result-title">Готовы проверить себя?</strong><p class="quiz-result-text">Выберите ответ в каждом вопросе.</p></div><button type="button" class="btn btn-secondary quiz-retry">Пройти ещё раз</button></div></section>
 </section>
 
 <!-- ============================================================ -->
@@ -912,6 +1344,7 @@ input[type="range"]::-moz-range-thumb{
     <h2>📈 Доходы бюджета и счастье горожан — прогноз на 12 кварталов</h2>
     <div class="chart-container"><canvas id="m4-chart-budget"></canvas></div>
   </div>
+<section class="knowledge-check" data-quiz="pageM4"><div class="quiz-heading"><div><span class="quiz-kicker">KNOWLEDGE CHECK · 04</span><h2>🧠 Проверка знаний · Налоги и бюджет</h2><p>3 вопроса · нужно 2 правильных ответа, чтобы пройти раздел</p></div><div class="quiz-score"><b class="quiz-score-value">0/3</b><span>результат</span></div></div><div class="quiz-progress"><i></i></div><div class="quiz-list"><article class="quiz-question" data-question="0"><div class="quiz-qtop"><span>01</span><b>На что направляются налоги в описании проекта?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Только на рекламу города</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>На финансирование дорог, школ, больниц и социальной поддержки</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Только на прибыль предприятий</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Только на экспорт</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="1"><div class="quiz-qtop"><span>02</span><b>Что означает дефицит бюджета?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Налоги равны нулю</button><button type="button" class="quiz-option" data-correct="0"><span>B</span>Доходы превышают расходы</button><button type="button" class="quiz-option" data-correct="1"><span>C</span>Расходы превышают доходы</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>ВВП растёт быстрее цен</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="2"><div class="quiz-qtop"><span>03</span><b>Почему слишком высокий налог может быть проблемой?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Он полностью устраняет инфляцию</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Он снижает прибыльность бизнеса и может замедлить деловую активность</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Он всегда ускоряет инвестиции</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Он гарантирует рост числа предприятий</button></div><div class="quiz-feedback" aria-live="polite"></div></article></div><div class="quiz-result"><div class="quiz-result-icon">✓</div><div><strong class="quiz-result-title">Готовы проверить себя?</strong><p class="quiz-result-text">Выберите ответ в каждом вопросе.</p></div><button type="button" class="btn btn-secondary quiz-retry">Пройти ещё раз</button></div></section>
 </section>
 
 <!-- ============================================================ -->
@@ -980,12 +1413,13 @@ input[type="range"]::-moz-range-thumb{
       <div class="chart-small"><h3>Счастье горожан, %</h3><canvas id="m5-chart-happiness"></canvas></div>
     </div>
   </div>
+<section class="knowledge-check" data-quiz="pageM5"><div class="quiz-heading"><div><span class="quiz-kicker">KNOWLEDGE CHECK · 05</span><h2>🧠 Проверка знаний · Город будущего</h2><p>3 вопроса · нужно 2 правильных ответа, чтобы пройти раздел</p></div><div class="quiz-score"><b class="quiz-score-value">0/3</b><span>результат</span></div></div><div class="quiz-progress"><i></i></div><div class="quiz-list"><article class="quiz-question" data-question="0"><div class="quiz-qtop"><span>01</span><b>Есть ли один универсально правильный набор решений?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Да, нужно всегда ставить налог 10%</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Нет: разные комбинации создают разные компромиссы между ростом, стабильностью и счастьем</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Да, нужно максимизировать ВВП</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Да, все параметры должны быть 100%</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="1"><div class="quiz-qtop"><span>02</span><b>За какой горизонт строится прогноз?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>3 года, 12 кварталов</button><button type="button" class="quiz-option" data-correct="0"><span>B</span>1 год, 4 квартала</button><button type="button" class="quiz-option" data-correct="1"><span>C</span>5 лет, то есть 20 кварталов</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>10 лет, 40 кварталов</button></div><div class="quiz-feedback" aria-live="polite"></div></article><article class="quiz-question" data-question="2"><div class="quiz-qtop"><span>03</span><b>Почему эффект инвестиций в образование и инфраструктуру может появиться не сразу?</b></div><div class="quiz-options"><button type="button" class="quiz-option" data-correct="0"><span>A</span>Потому что налоги автоматически блокируют инвестиции</button><button type="button" class="quiz-option" data-correct="1"><span>B</span>Экономика инерционна, поэтому эффект может проявиться через несколько кварталов</button><button type="button" class="quiz-option" data-correct="0"><span>C</span>Потому что графики работают только раз в год</button><button type="button" class="quiz-option" data-correct="0"><span>D</span>Потому что эти параметры не влияют на экономику</button></div><div class="quiz-feedback" aria-live="polite"></div></article></div><div class="quiz-result"><div class="quiz-result-icon">✓</div><div><strong class="quiz-result-title">Готовы проверить себя?</strong><p class="quiz-result-text">Выберите ответ в каждом вопросе.</p></div><button type="button" class="btn btn-secondary quiz-retry">Пройти ещё раз</button></div></section>
 </section>
 
 </div><!-- /.container -->
 
 <footer class="site-footer">
-  <span>© 2026 EconExplorer — образовательный прототип</span>
+  <span>© 2026 EconExplorer · interactive learning lab</span>
   <span>Модель упрощена для обучения и не является макроэкономическим прогнозом</span>
 </footer>
 
@@ -996,6 +1430,7 @@ input[type="range"]::-moz-range-thumb{
 'use strict';
 
 const App = {};
+window.App = App;
 
 /* ---------- утилиты ---------- */
 function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
@@ -1216,62 +1651,31 @@ function seedRandom(seed){
    КАРТА ГОРОДА — живая SVG-схема, реагирующая на снимок экономики
    ============================================================ */
 App.renderCityMap = function(containerEl, snap, compact){
-  if(!containerEl) return;
-  const industryT = clamp((snap.gdpGrowth + 1.5) / 3.5, 0, 1);
-  const civicT = clamp(((snap.params.education + snap.params.healthcare)/2)/100, 0, 1);
-  const happyT = clamp(snap.happiness/100, 0, 1);
-  const troubleT = clamp((snap.unemployment-8)/14, 0, 1);
-  const inflationOverlay = clamp(snap.inflation/40, 0, 0.4);
-
-  const industryFill = mixHex('2B4550', '18A398', industryT);
-  const industryGlow = mixHex('18A398', '57D9C9', industryT);
-  const civicFill = mixHex('4A4536', 'E9C784', civicT);
-  const resFill = mixHex('4E5A50', '8FD9B6', happyT * (1-troubleT*0.7));
-
-  const h = compact ? 108 : 176;
-  let svg = '<svg viewBox="0 0 300 '+h+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема города">';
-
-  // grid backdrop
-  svg += '<defs><pattern id="grid-'+(compact?'c':'h')+'" width="20" height="20" patternUnits="userSpaceOnUse">' +
-    '<path d="M20 0H0V20" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern></defs>';
-  svg += '<rect width="300" height="'+h+'" fill="url(#grid-'+(compact?'c':'h')+')"/>';
-
-  // roads
-  const midY = h/2 + 6;
-  svg += '<path d="M0 '+midY+' H300 M150 0 V'+h+'" stroke="rgba(255,255,255,.16)" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>';
-
-  // industrial cluster (top-left)
-  const blocks = [[14,14,42,26],[62,10,30,32],[14,46,34,16],[100,44,26,16]];
-  blocks.forEach((b,i)=>{
-    svg += '<rect x="'+b[0]+'" y="'+b[1]+'" width="'+b[2]+'" height="'+b[3]+'" rx="2" fill="'+industryFill+'" opacity="'+(0.75+0.25*industryT)+'"/>';
-  });
-  if(!compact) svg += '<circle cx="30" cy="8" r="2.4" fill="'+industryGlow+'"><animate attributeName="opacity" values="1;.3;1" dur="2.4s" repeatCount="indefinite"/></circle>';
-
-  // civic cluster (top-right)
-  const civicBlocks = [[160,12,32,22],[200,16,36,26],[244,10,30,20]];
-  civicBlocks.forEach(b=>{
-    svg += '<rect x="'+b[0]+'" y="'+b[1]+'" width="'+b[2]+'" height="'+b[3]+'" rx="3" fill="'+civicFill+'"/>';
-    svg += '<rect x="'+(b[0]+b[2]/2-5)+'" y="'+(b[1]-6)+'" width="10" height="6" fill="'+civicFill+'"/>';
-  });
-
-  // residential cluster (bottom)
-  const rowY = h - (compact?26:34);
-  for(let i=0;i<8;i++){
-    const rx = 12 + i*35;
-    svg += '<rect x="'+rx+'" y="'+rowY+'" width="22" height="'+(compact?16:22)+'" fill="'+resFill+'"/>';
-    svg += '<polygon points="'+(rx-3)+','+rowY+' '+(rx+11)+','+(rowY-9)+' '+(rx+25)+','+rowY+'" fill="'+resFill+'"/>';
-    if(troubleT>0.45){
-      svg += '<line x1="'+rx+'" y1="'+rowY+'" x2="'+(rx+22)+'" y2="'+(rowY+(compact?16:22))+'" stroke="#AE4A2E" stroke-width="1.2" opacity="'+troubleT+'"/>';
-    }
-  }
-
-  // inflation haze overlay across whole city
-  if(inflationOverlay>0.02){
-    svg += '<rect width="300" height="'+h+'" fill="#AE4A2E" opacity="'+inflationOverlay.toFixed(2)+'"/>';
-  }
-
-  svg += '</svg>';
-  containerEl.innerHTML = svg;
+  if(!containerEl)return;
+  const industryT=clamp((snap.gdpGrowth+1.5)/3.5,0,1);
+  const civicT=clamp(((snap.params.education+snap.params.healthcare)/2)/100,0,1);
+  const happyT=clamp(snap.happiness/100,0,1);
+  const troubleT=clamp((snap.unemployment-8)/14,0,1);
+  const industry=mixHex('24434B','18A398',industryT), glow=mixHex('19363F','57D9C9',industryT);
+  const civic=mixHex('4C4433','E9C784',civicT), residential=mixHex('334D45','8FD9B6',happyT*(1-troubleT*.65));
+  const danger=mixHex('513F3B','AE4A2E',troubleT);
+  const h=compact?132:206, key=(containerEl.id||'city').replace(/\W/g,''), uid='atlas'+key+(compact?'c':'h');
+  let s='<svg viewBox="0 0 420 '+h+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Карта предприятий и районов города">';
+  s+='<defs><linearGradient id="'+uid+'bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#062D2B"/><stop offset=".6" stop-color="#0A4744"/><stop offset="1" stop-color="#082F3A"/></linearGradient><filter id="'+uid+'sh"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#001817" flood-opacity=".4"/></filter><pattern id="'+uid+'grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#7EE3D7" stroke-opacity=".045"/></pattern></defs>';
+  s+='<rect width="420" height="'+h+'" rx="12" fill="url(#'+uid+'bg)"/><rect width="420" height="'+h+'" rx="12" fill="url(#'+uid+'grid)"/>';
+  s+='<path d="M-15 '+(h*.77)+' C75 '+(h*.56)+',130 '+(h*.96)+',210 '+(h*.72)+' S345 '+(h*.53)+',435 '+(h*.68)+'" fill="none" stroke="#143F4A" stroke-width="'+(compact?12:18)+'"/><path d="M-15 '+(h*.77)+' C75 '+(h*.56)+',130 '+(h*.96)+',210 '+(h*.72)+' S345 '+(h*.53)+',435 '+(h*.68)+'" fill="none" stroke="#55AEB1" stroke-opacity=".2" stroke-width="2"/>';
+  s+='<path d="M18 '+(h*.39)+' H402 M108 12 V'+(h-12)+' M286 12 V'+(h-12)+'" fill="none" stroke="#173C3F" stroke-width="14" stroke-linecap="round"/><path d="M18 '+(h*.39)+' H402 M108 12 V'+(h-12)+' M286 12 V'+(h-12)+'" fill="none" stroke="#3D6C6A" stroke-width="5" stroke-linecap="round"/>';
+  s+='<path d="M30 '+(h*.58)+' H380 M168 18 V'+(h*.64)+' M350 20 V'+(h*.55)+'" fill="none" stroke="#6B9490" stroke-opacity=".28" stroke-width="2"/>';
+  s+='<g font-family="JetBrains Mono,monospace" font-size="'+(compact?7:8)+'" letter-spacing="1.1" fill="#B9EAE3" fill-opacity=".55"><text x="18" y="18">INDUSTRIAL / A</text><text x="302" y="18">CIVIC / B</text><text x="18" y="'+(h-7)+'">RESIDENTIAL / C</text></g>';
+  const es=[[18,25,52,28,'Завод',industry],[76,25,42,50,'Логистика',industry],[18,83,43,23,'Склад',industry],[67,83,51,24,'Энергия',glow],[136,20,39,23,'Университет',civic],[181,20,34,30,'Клиника',civic],[219,20,45,25,'Школа',civic],[302,27,42,27,'Офисы',glow],[351,27,48,35,'Технопарк',glow]];
+  es.forEach(e=>{const x=e[0],y=e[1],w=e[2],hh=e[3],fill=e[5],stroke=fill===civic?'#F2DDA1':'#74E4D8';s+='<g filter="url(#'+uid+'sh)"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+hh+'" rx="4" fill="'+fill+'" stroke="'+stroke+'" stroke-opacity=".3"/><path d="M'+(x+5)+' '+(y+7)+'h'+(w-10)+'" stroke="#D6FFF7" stroke-opacity=".16"/><rect x="'+(x+8)+'" y="'+(y+hh-8)+'" width="5" height="4" rx="1" fill="#D9FFF8" fill-opacity=".3"/><rect x="'+(x+w-14)+'" y="'+(y+hh-8)+'" width="5" height="4" rx="1" fill="#D9FFF8" fill-opacity=".22"/></g>';});
+  [130,153,176,316,339,363,386].forEach((x,i)=>{const bh=(compact?18:24)+(i%3)*(compact?5:8),y=h-18-bh,fill=(troubleT>.58&&i%3===0)?danger:residential;s+='<g filter="url(#'+uid+'sh)"><rect x="'+x+'" y="'+y+'" width="16" height="'+bh+'" rx="2" fill="'+fill+'"/>';for(let wy=y+5;wy<y+bh-2;wy+=6)s+='<path d="M'+(x+4)+' '+wy+'h3 M'+(x+9)+' '+wy+'h3" stroke="#E6FFF7" stroke-opacity=".24" stroke-width="1.2"/>';s+='</g>';});
+  s+='<path d="M218 '+(h*.54)+'q25-16 50 0q-10 25-25 27q-17-5-25-27Z" fill="#6DBB92" fill-opacity=".35"/><circle cx="228" cy="'+(h*.57)+'" r="3" fill="#A6E8B8" fill-opacity=".7"/><circle cx="242" cy="'+(h*.56)+'" r="3" fill="#A6E8B8" fill-opacity=".65"/><circle cx="254" cy="'+(h*.59)+'" r="3" fill="#A6E8B8" fill-opacity=".7"/>';
+  const activity=clamp((snap.businesses-70)/180,0,1);
+  [[48,64],[100,68],[323,70],[376,70],[151,h*.58],[330,h*.61]].forEach((n,i)=>{s+='<circle cx="'+n[0]+'" cy="'+n[1]+'" r="'+(compact?5:7)+'" fill="'+glow+'" opacity=".08"/><circle cx="'+n[0]+'" cy="'+n[1]+'" r="'+(compact?2.2:3)+'" fill="'+glow+'" opacity="'+(.35+.65*activity)+'"><animate attributeName="opacity" values=".25;'+(.65+.35*activity)+';.25" dur="'+(2+i*.17)+'s" repeatCount="indefinite"/></circle>';});
+  if(troubleT>.2)s+='<g transform="translate(392 '+(h-29)+')"><circle r="11" fill="'+danger+'" fill-opacity=".18"/><circle r="7" fill="none" stroke="'+danger+'" stroke-opacity=".8"/><path d="M0-3v6M-3 0h6" stroke="#FFD5C9" stroke-width="1.5"/></g>';
+  if(!compact)s+='<g font-family="Inter,Arial,sans-serif" font-size="8" fill="#D9FFF8" fill-opacity=".62"><circle cx="20" cy="'+(h-27)+'" r="3" fill="'+glow+'"/><text x="28" y="'+(h-24)+'">предприятия</text><circle cx="89" cy="'+(h-27)+'" r="3" fill="'+civic+'"/><text x="97" y="'+(h-24)+'">соц. объекты</text><circle cx="168" cy="'+(h-27)+'" r="3" fill="'+residential+'"/><text x="176" y="'+(h-24)+'">жильё</text><text x="292" y="'+(h-24)+'" fill="#8EE8DC" fill-opacity=".38">LIVE CITY GRID</text></g>';
+  s+='</svg>';containerEl.innerHTML=s;
 };
 
 /* ============================================================
@@ -1323,6 +1727,16 @@ App.lineChart = function(canvasId, labels, datasets, yOpts){
   const el = document.getElementById(canvasId);
   if(!el) return;
   if(App.charts[canvasId]) App.charts[canvasId].destroy();
+  if(typeof Chart === 'undefined'){
+    const ctx = el.getContext && el.getContext('2d');
+    if(ctx){
+      ctx.clearRect(0,0,el.width,el.height);
+      ctx.font = '12px JetBrains Mono, monospace';
+      ctx.fillStyle = '#7C8779';
+      ctx.fillText('График будет доступен после загрузки Chart.js', 12, 24);
+    }
+    return;
+  }
   App.charts[canvasId] = new Chart(el, {
     type:'line',
     data:{ labels, datasets: datasets.map(d=>Object.assign({
@@ -1781,16 +2195,296 @@ App.bindSliders = function(prefix, keys, onChange){
   updateQuarterStamp();
   const hashPage = location.hash.replace('#','');
   const start = App.pageIds[hashPage] ? hashPage : 'home';
+
   App.pages.forEach(p=>{
-    document.getElementById(App.pageIds[p]).classList.toggle('hidden', p!==start);
+    const page = document.getElementById(App.pageIds[p]);
+    if(page) page.classList.toggle('hidden', p!==start);
   });
+
   document.querySelectorAll('#mainNav a').forEach(a=>{
     a.classList.toggle('active', a.getAttribute('data-page')===start);
   });
-  if(App.pageRenderers[start]) App.pageRenderers[start]();
-  // на всякий случай прогреваем главную карту и данные, даже если стартуем не с неё
-  if(start!=='home' && App.pageRenderers.home) App.pageRenderers.home();
+
+  // Всегда сначала отрисовываем данные: это гарантирует заполненный dashboard.
+  if(App.pageRenderers.home) App.pageRenderers.home();
+
+  // Затем, если пользователь открыл конкретный модуль по hash, рисуем его.
+  if(start!=='home' && App.pageRenderers[start]) App.pageRenderers[start]();
+
+  updateQuarterStamp();
 })();
+
+/* ================================================================
+   WOW CONTROLS — command palette, live score, range fills, toast,
+   keyboard navigation, scroll progress and subtle data animation.
+   ================================================================ */
+(function(){
+  const $ = (s,root=document)=>root.querySelector(s);
+  const $$ = (s,root=document)=>Array.from(root.querySelectorAll(s));
+
+  /* scroll progress */
+  const updateScroll = ()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    document.documentElement.style.setProperty('--scroll-progress',
+      (max>0?(window.scrollY/max*100):0)+'%');
+  };
+  addEventListener('scroll',updateScroll,{passive:true}); updateScroll();
+
+  /* range fill */
+  function paintRange(el){
+    if(!el) return;
+    const min=Number(el.min||0),max=Number(el.max||100),v=Number(el.value);
+    el.style.setProperty('--range-fill',((v-min)/(max-min)*100)+'%');
+  }
+  function paintAll(){ $$('input[type="range"]').forEach(paintRange); }
+  document.addEventListener('input',e=>{if(e.target.matches('input[type="range"]'))paintRange(e.target)});
+  paintAll();
+
+  /* toast */
+  let toast=$('.x-toast');
+  if(!toast){toast=document.createElement('div');toast.className='x-toast';document.body.appendChild(toast)}
+  let toastTimer;
+  window.xToast=function(msg){
+    toast.textContent=msg;toast.classList.add('show');
+    clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+  };
+
+  /* command palette */
+  const items=[
+    ['⌂','Главная','home'],
+    ['01','ВВП и экономический рост','m1'],
+    ['02','Инфляция: почему растут цены','m2'],
+    ['03','Безработица и рынок труда','m3'],
+    ['04','Налоги и бюджет','m4'],
+    ['05','Город будущего','m5']
+  ];
+  const btn=document.createElement('button');
+  btn.className='x-command';btn.id='xCommand';btn.title='Командный центр';btn.setAttribute('aria-label','Открыть командный центр');btn.textContent='⌘';
+  document.body.appendChild(btn);
+
+  const overlay=document.createElement('div');
+  overlay.className='x-overlay';overlay.id='xOverlay';
+  overlay.innerHTML='<div class="x-modal" role="dialog" aria-modal="true" aria-label="Командный центр">'+
+    '<div class="x-search"><input id="xSearch" autocomplete="off" placeholder="Перейти к модулю…  (Esc — закрыть)"></div>'+
+    '<div class="x-results" id="xResults"></div></div>';
+  document.body.appendChild(overlay);
+
+  const search=$('#xSearch',overlay),results=$('#xResults',overlay);
+  function renderResults(q=''){
+    const needle=q.trim().toLowerCase();
+    const filtered=items.filter(x=>(x[1]+' '+x[2]).toLowerCase().includes(needle));
+    results.innerHTML=filtered.map((x,i)=>'<button class="x-result '+(i===0?'selected':'')+'" data-page="'+x[2]+'"><span class="num">'+x[0]+'</span>'+x[1]+'</button>').join('') ||
+      '<div style="padding:20px;color:var(--ink-faint);font-size:13px">Ничего не найдено</div>';
+  }
+  function openPalette(){overlay.classList.add('open');renderResults();setTimeout(()=>search.focus(),20)}
+  function closePalette(){overlay.classList.remove('open')}
+  btn.addEventListener('click',openPalette);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)closePalette()});
+  search.addEventListener('input',()=>renderResults(search.value));
+  results.addEventListener('click',e=>{
+    const b=e.target.closest('[data-page]'); if(!b)return;
+    closePalette();
+    if(window.App&&App.showPage)App.showPage(b.dataset.page);
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')closePalette();
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openPalette()}
+    if(overlay.classList.contains('open')&&(e.key==='Enter')){
+      const b=$('.x-result.selected',results);if(b)b.click();
+    }
+  });
+
+  /* keyboard navigation in palette */
+  search.addEventListener('keydown',e=>{
+    if(!['ArrowDown','ArrowUp'].includes(e.key))return;
+    const bs=$$('.x-result',results);if(!bs.length)return;
+    const idx=bs.indexOf($('.x-result.selected',results));
+    const next=e.key==='ArrowDown'?(idx+1)%bs.length:(idx-1+bs.length)%bs.length;
+    bs.forEach(b=>b.classList.remove('selected'));bs[next].classList.add('selected');e.preventDefault();
+  });
+
+  /* city score — purely derived from the existing educational model */
+  function scoreCity(snap){
+    if(!snap)return null;
+    const growth=clamp((snap.gdpGrowth+1)/4,0,1)*30;
+    const prices=(1-clamp(Math.abs(snap.inflation-3)/18,0,1))*20;
+    const jobs=(1-clamp((snap.unemployment-3)/17,0,1))*20;
+    const happy=clamp(snap.happiness/100,0,1)*30;
+    return Math.round(growth+prices+jobs+happy);
+  }
+  function paintScore(){
+    if(!window.App||!App.engine||!App.state)return;
+    const snap=App.engine.snapshot(App.state),score=scoreCity(snap);
+    const ring=$('#xRing'),value=$('#xScoreValue'),text=$('#xScoreText');
+    if(!ring||score==null)return;
+    ring.style.setProperty('--score',score+'%');value.textContent=score;
+    text.textContent=score>=80?'Город в отличной форме — рост не съедает качество жизни.':
+      score>=60?'Сбалансированная экономика — есть пространство для улучшения.':
+      score>=40?'Есть перекосы: попробуйте поэкспериментировать с параметрами.':
+      'Система под давлением — ищите комбинацию, которая вернёт баланс.';
+  }
+
+  /* Observe render calls without touching the original engine. */
+  const originalSnapshot=window.App && App.engine && App.engine.snapshot;
+  if(originalSnapshot){
+    App.engine.snapshot=function(){
+      const r=originalSnapshot.apply(this,arguments);
+      requestAnimationFrame(paintScore);
+      return r;
+    };
+  }
+  document.addEventListener('input',()=>requestAnimationFrame(paintScore));
+  setTimeout(paintScore,300);
+
+  /* Add a tiny "saved" feedback after reset/apply interactions. */
+  document.addEventListener('click',e=>{
+    if(e.target.closest('#m5-apply-city')) setTimeout(()=>xToast('✓ Стратегия применена к городу'),50);
+    if(e.target.closest('#resetCityBtn')) xToast('↺ Возвращаем город к базовой конфигурации…');
+  });
+
+  /* Number pop on important KPI changes */
+  const observeIds=['kpiGdp','kpiInflation','kpiUnemployment','kpiHappiness'];
+  const last={};
+  setInterval(()=>{
+    observeIds.forEach(id=>{
+      const el=document.getElementById(id);if(!el)return;
+      const v=el.textContent;if(v&&v!=='—'&&last[id]&&last[id]!==v){
+        el.classList.remove('x-pulse');void el.offsetWidth;el.classList.add('x-pulse');
+      }
+      last[id]=v;
+    });
+  },350);
+})();
+
+/* Надёжная навигация: клики + прямое открытие URL#модуль. */
+window.addEventListener('hashchange', function(){
+  const key = location.hash.replace('#','');
+  if(App.pageIds[key]) App.showPage(key);
+});
+
+
+/* ================================================================
+   ECONEXPLORER 2.0 RUNTIME
+   ================================================================ */
+(function(){
+  const $=(s,r=document)=>r.querySelector(s);
+  const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+
+  const scenarios={
+    growth:{title:'Рывок роста',icon:'↗',text:'Город ускоряет инвестиции и деловую активность. Рост ВВП усиливается, но следите за ценами.',params:{infrastructure:78,education:62,healthcare:58,taxRate:16,moneySupplyGrowth:7,businessConfidence:86,sector:'balanced'}},
+    social:{title:'Социальный баланс',icon:'✦',text:'Приоритет — человеческий капитал. Краткосрочный рост скромнее, зато качество жизни и устойчивость выше.',params:{infrastructure:64,education:86,healthcare:88,taxRate:18,moneySupplyGrowth:5,businessConfidence:67,sector:'services'}},
+    stability:{title:'Стабильные цены',icon:'◉',text:'Сдерживаем инфляционное давление. Цены спокойнее, но чрезмерное ужесточение может замедлить рост.',params:{infrastructure:55,education:58,healthcare:55,taxRate:20,moneySupplyGrowth:2,businessConfidence:58,sector:'balanced'}},
+    tech:{title:'Техно-хаб',icon:'⌁',text:'Ставка на технологии и навыки. Потенциал роста выше, но переходный период требует инвестиций.',params:{infrastructure:70,education:92,healthcare:64,taxRate:15,moneySupplyGrowth:6,businessConfidence:82,sector:'tech'}}
+  };
+
+  function fmt(n,d=1){return Number(n).toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d})}
+  function clamp2(n,a,b){return Math.max(a,Math.min(b,n))}
+  function paintBar(id,val){const el=document.getElementById(id);if(el)el.style.width=clamp2(val,0,100)+'%'}
+  function setText(id,v){const el=document.getElementById(id);if(el)el.textContent=v}
+
+  function health(s){
+    const growth=clamp2((s.gdpGrowth+1.2)/2.8*100,0,100);
+    const price=clamp2(100-Math.abs(s.inflation-3.2)*8,0,100);
+    const jobs=clamp2(100-(s.unemployment-3)*6,0,100);
+    return {growth,price,jobs,happy:s.happiness};
+  }
+
+  function updateControlRoom(){
+    if(!window.App||!App.engine||!App.state)return;
+    const s=App.engine.snapshot(App.state),h=health(s);
+    setText('xTelemetryQuarter','Q'+App.state.quarter);
+    setText('xGrowth',fmt(s.gdpGrowth)+'%');
+    setText('xInflationHealth',fmt(s.inflation)+'%');
+    setText('xJobsHealth',fmt(s.unemployment)+'%');
+    setText('xHappiness',s.happiness+'/100');
+    paintBar('xGrowthBar',h.growth);paintBar('xInflationBar',h.price);paintBar('xJobsBar',h.jobs);paintBar('xHappinessBar',h.happy);
+
+    setText('xCityIndustry',Math.round(clamp2((s.gdpGrowth+1.5)/3.5*100,0,100))+'%');
+    setText('xCityCivic',Math.round((App.state.education+App.state.healthcare)/2)+'%');
+    setText('xCityLife',s.happiness+'%');
+
+    let status='СИСТЕМА СТАБИЛЬНА';
+    if(s.inflation>8)status='ЦЕНЫ ПОД ДАВЛЕНИЕМ';
+    else if(s.unemployment>12)status='РЫНОК ТРУДА НАПРЯЖЁН';
+    else if(s.happiness>=80)status='ГОРОД В ФОРМЕ';
+    setText('xLiveLabel',status);
+
+    if(!document.querySelector('.scenario.active')) {
+      // nothing
+    }
+  }
+
+  function applyScenario(key){
+    const sc=scenarios[key]; if(!sc||!window.App)return;
+    Object.assign(App.state,sc.params);
+    if(typeof saveState==='function')saveState();
+    $$('.scenario').forEach(b=>b.classList.toggle('active',b.dataset.scenario===key));
+
+    // If module 5 controls are present, sync them immediately.
+    ['infrastructure','education','healthcare','taxRate','moneySupplyGrowth'].forEach(k=>{
+      const input=document.getElementById('m5-slider-'+k),out=document.getElementById('m5-val-'+k);
+      if(input)input.value=App.state[k];
+      if(out)out.textContent=App.state[k];
+    });
+
+    if(App.pageRenderers && App.pageRenderers.home)App.pageRenderers.home();
+    updateControlRoom();
+
+    setText('xFeedIcon',sc.icon);setText('xFeedTitle',sc.title);setText('xFeedText',sc.text);
+    const feed=$('.decision-feed'); if(feed){feed.classList.remove('x-pulse');void feed.offsetWidth;feed.classList.add('x-pulse')}
+    if(window.xToast)window.xToast('✓ Сценарий «'+sc.title+'» применён');
+  }
+
+  $$('.scenario').forEach(b=>b.addEventListener('click',()=>applyScenario(b.dataset.scenario)));
+
+  // Existing controls are already responsible for state updates. We observe
+  // input/change events and refresh the home telemetry without changing the model.
+  document.addEventListener('input',e=>{
+    if(e.target.matches('input[type="range"],input[type="radio"],select')){
+      setTimeout(updateControlRoom,20);
+    }
+  });
+  document.addEventListener('change',e=>{
+    if(e.target.matches('input[type="range"],input[type="radio"],select')){
+      setTimeout(updateControlRoom,20);
+    }
+  });
+
+  // Make the home KPI strip visibly react when values change.
+  let previous={};
+  setInterval(()=>{
+    ['kpiGdp','kpiInflation','kpiUnemployment','kpiHappiness'].forEach(id=>{
+      const el=document.getElementById(id);if(!el)return;
+      const v=el.textContent;
+      if(previous[id] && previous[id]!==v){
+        const cell=el.closest('.kpi-cell');
+        if(cell){cell.classList.remove('flash');void cell.offsetWidth;cell.classList.add('flash')}
+      }
+      previous[id]=v;
+    });
+  },280);
+
+  // Initial paint + delayed repaint after external CDN/layout work.
+  setTimeout(updateControlRoom,100);
+  setTimeout(updateControlRoom,600);
+  setTimeout(updateControlRoom,1400);
+})();
+
+
+(function(){
+  function initQuiz(root){
+    if(!root||root.dataset.ready)return;root.dataset.ready='1';
+    const qs=[...root.querySelectorAll('.quiz-question')],scoreEl=root.querySelector('.quiz-score-value'),progress=root.querySelector('.quiz-progress i'),title=root.querySelector('.quiz-result-title'),text=root.querySelector('.quiz-result-text'),icon=root.querySelector('.quiz-result-icon');
+    let score=0,answered=0;
+    function update(){scoreEl.textContent=score+'/3';progress.style.width=(answered/3*100)+'%';if(answered===3){const pass=score>=2;root.classList.toggle('passed',pass);root.classList.toggle('failed',!pass);icon.textContent=pass?'✓':'!';title.textContent=pass?'Отлично — раздел усвоен':'Почти! Стоит ещё раз посмотреть ключевые идеи';text.textContent=pass?'Вы набрали '+score+' из 3. Можно переходить к следующему модулю.':'Правильных ответов: '+score+' из 3. Перечитайте материал и попробуйте ещё раз.';}}
+    qs.forEach(q=>q.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>{if(q.dataset.answered)return;q.dataset.answered='1';answered++;const good=btn.dataset.correct==='1';if(good)score++;q.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.correct==='1')b.classList.add('correct')});btn.classList.add('selected');const f=q.querySelector('.quiz-feedback');f.className='quiz-feedback '+(good?'good':'bad');f.textContent=good?'✓ Верно.':'Не совсем. Правильный вариант подсвечен.';update();})));
+    root.querySelector('.quiz-retry').addEventListener('click',()=>{score=0;answered=0;root.classList.remove('passed','failed');qs.forEach(q=>{delete q.dataset.answered;q.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=false;b.classList.remove('selected','correct','wrong')});const f=q.querySelector('.quiz-feedback');f.className='quiz-feedback';f.textContent=''});update();root.scrollIntoView({behavior:'smooth',block:'center'});});
+    update();
+  }
+  function init(){document.querySelectorAll('.knowledge-check').forEach(initQuiz)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+
 </script>
 </body>
 </html>
